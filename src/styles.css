@@ -1,0 +1,927 @@
+/* styles.css */
+
+:root {
+  --bg-main: #050505;
+  --bg-card: #111111;
+  --text-main: #ffffff;
+  --text-muted: #aaaaaa;
+  --accent-pink: #ff2d55;
+  --accent-pink-soft: #ff5e7a;
+  --accent-purple: #a855f7;
+  --accent-blue: #4f46e5;
+  --accent-green: #16a34a;
+  --accent-input-border: #2a2a2a;
+  --btn-gradient-start: #ff00c3;
+  --btn-gradient-end: #ff5e7a;
+  --radius-xl: 32px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================= LANDING PAGE ================= */
+
+body.page-landing {
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Oldalsó motívumok – teljes PNG, nagyobb méret, beljebb lóg */
+
+body.page-landing::before,
+body.page-landing::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: auto;
+  aspect-ratio: 1 / 2.3;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  z-index: 0;
+}
+
+/* Bal felső motívum */
+body.page-landing::before {
+  top: 0;
+  left: -40px;
+  background-image: url("/Group_19.webp");
+}
+
+/* Jobb alsó motívum */
+body.page-landing::after {
+  bottom: 0;
+  right: -40px;
+  background-image: url("/Group_20.webp");
+}
+
+.landing-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  width: 100%;
+}
+
+.year-watermark {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  font-size: 36vw;
+  font-weight: 800;
+  color: #151515;
+  opacity: 0.35;
+  pointer-events: none;
+  user-select: none;
+}
+
+.landing-content {
+  position: relative;
+  max-width: 560px;
+}
+
+.landing-title-year {
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.landing-title-main {
+  font-size: 52px;
+  line-height: 1.05;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.landing-subtitle {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 420px;
+  margin-bottom: 40px;
+}
+
+.wallet-form {
+  display: flex;
+  align-items: center;
+  max-width: 520px;
+}
+
+.wallet-input {
+  flex: 1;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--accent-input-border);
+  background: #111111;
+  padding: 16px 22px;
+  font-size: 15px;
+  color: var(--text-main);
+  outline: none;
+}
+
+.wallet-input::placeholder {
+  color: #555555;
+}
+
+.wallet-button {
+  margin-left: 16px;
+  border-radius: var(--radius-pill);
+  border: none;
+  padding: 14px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  background-image: linear-gradient(
+    135deg,
+    var(--btn-gradient-start),
+    var(--btn-gradient-end)
+  );
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(255, 45, 85, 0.45);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.wallet-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 36px rgba(255, 45, 85, 0.65);
+}
+
+/* ================= GENERIC FRAME LAYOUT (SLIDE-OK) ================= */
+
+.frame-page {
+  padding: 40px 20px;
+}
+
+.frame-wrapper {
+  width: min(430px, 90vw);
+  aspect-ratio: 9 / 16;
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.7);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.frame-inner {
+  position: relative;
+  padding: 36px 30px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.frame-title-lg {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.frame-subtitle {
+  font-size: 17px;
+  color: var(--text-muted);
+}
+
+.frame-title-xl {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 18px;
+}
+
+.frame-text-muted {
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+/* ===== FRAME – Life moves fast ===== */
+
+body.page-life-fast .frame-wrapper::before,
+body.page-life-fast .frame-wrapper::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+body.page-life-fast .frame-wrapper::before {
+  top: 0;
+  background-image: url("/Group_21.webp");
+}
+
+body.page-life-fast .frame-wrapper::after {
+  bottom: 0;
+  background-image: url("/Group_22.webp");
+}
+
+/* ===== FRAME – Total coins traded ===== */
+
+body.page-total-coins .frame-wrapper::before,
+body.page-total-coins .frame-wrapper::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+body.page-total-coins .frame-wrapper::before {
+  top: 0;
+  background-image: url("/Group_23.webp");
+}
+
+body.page-total-coins .frame-wrapper::after {
+  bottom: 0;
+  background-image: url("/Group_24.webp");
+}
+
+/* Total Coins – szöveg széthúzása + neon szám */
+
+body.page-total-coins .frame-inner {
+  padding: 60px 40px;
+  line-height: 1.35;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+body.page-total-coins .frame-title-xl {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 22px;
+}
+
+body.page-total-coins .frame-text-muted {
+  font-size: 17px;
+  margin-top: 10px;
+  opacity: 0.75;
+}
+
+body.page-total-coins .coins-number {
+  color: #cdfb00;
+  font-weight: 900;
+  text-shadow: 0 0 8px rgba(205, 251, 0, 0.45);
+}
+
+/* ===== FRAME – Most active day ===== */
+
+body.page-most-active .frame-wrapper::before,
+body.page-most-active .frame-wrapper::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+body.page-most-active .frame-wrapper::before {
+  top: 0;
+  background-image: url("/Group_25.webp");
+}
+
+body.page-most-active .frame-wrapper::after {
+  bottom: 0;
+  background-image: url("/Group_26.webp");
+}
+
+.highlight {
+  color: var(--accent-purple);
+}
+
+/* ===== FRAME – Top trade / Worst trade ===== */
+
+body.page-top-trade .frame-wrapper::before,
+body.page-top-trade .frame-wrapper::after,
+body.page-worst-trade .frame-wrapper::before,
+body.page-worst-trade .frame-wrapper::after {
+  content: "";
+  position: absolute;
+  width: 450px;
+  height: 400px;
+  background: radial-gradient(
+    circle at center,
+    #ff5e7a 0%,
+    #ff9ba8 45%,
+    transparent 55%
+  );
+}
+
+body.page-top-trade .frame-wrapper::before,
+body.page-worst-trade .frame-wrapper::before {
+  top: -200px;
+  right: -130px;
+}
+
+body.page-top-trade .frame-wrapper::after,
+body.page-worst-trade .frame-wrapper::after {
+  bottom: -200px;
+  left: -130px;
+}
+
+.trade-image {
+  width: 160px;
+  height: 160px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  background-color: #222;
+  margin-bottom: 26px;
+}
+
+/* dummy fallback */
+.trade-image.baby {
+  background-image: url("https://via.placeholder.com/300x300?text=Baby");
+}
+
+.trade-image.pisscoin {
+  background-image: url("https://via.placeholder.com/300x300?text=Pisscoin");
+}
+
+.trade-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.trade-pnl {
+  color: var(--accent-purple);
+  font-weight: 700;
+}
+
+.trade-footnote {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+/* Top-trade main image override */
+.trade-image.custom-top-trade {
+  background-image: url("/Group_27.webp") !important;
+  background-size: cover;
+  background-position: center;
+}
+
+/* ===== TOP TRADES LIST ===== */
+
+body.page-top-trades-list .frame-wrapper::before,
+body.page-top-trades-list .frame-wrapper::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+body.page-top-trades-list .frame-wrapper::before {
+  top: 0;
+  background-image: url("/Group_28.webp");
+}
+
+body.page-top-trades-list .frame-wrapper::after {
+  bottom: 0;
+  background-image: url("/Group_29.webp");
+}
+
+.top-trades-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-align: left;
+  width: 100%;
+}
+
+.trades-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.trade-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 16px;
+  background: rgba(20, 20, 20, 0.9);
+}
+
+.trade-rank {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.trade-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: #333;
+  background-size: cover;
+  background-position: center;
+  margin-right: 8px;
+}
+
+.trade-info {
+  display: flex;
+  align-items: center;
+}
+
+.trade-names {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.trade-name-main {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.trade-name-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.pnl-badge-good {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--accent-green);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.pnl-badge-bad {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--accent-pink);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* dummy avatarok */
+.trade-avatar.baby {
+  background-image: url("https://via.placeholder.com/64x64?text=B");
+}
+.trade-avatar.patrick {
+  background-image: url("https://via.placeholder.com/64x64?text=P");
+}
+.trade-avatar.winter {
+  background-image: url("https://via.placeholder.com/64x64?text=W");
+}
+.trade-avatar.understand {
+  background-image: url("https://via.placeholder.com/64x64?text=U");
+}
+.trade-avatar.pico {
+  background-image: url("https://via.placeholder.com/64x64?text=Pi");
+}
+
+/* Top-trades-list avatar override */
+.trade-avatar.custom-avatar {
+  background-image: url("/Group_27.webp") !important;
+  background-size: cover;
+  background-position: center;
+}
+
+/* ===== FRAME – Winrate ===== */
+
+body.page-winrate .frame-wrapper::before,
+body.page-winrate .frame-wrapper::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 260px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+body.page-winrate .frame-wrapper::before {
+  top: 0;
+  background-image: url("/Group_36.webp");
+}
+
+body.page-winrate .frame-wrapper::after {
+  bottom: 0;
+  background-image: url("/Group_37.webp");
+}
+
+/* ===== FRAME – Ups & Downs ===== */
+
+body.page-ups-downs .frame-wrapper {
+  background: #ff79d1;
+}
+
+body.page-ups-downs .frame-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 140px;
+  height: 100%;
+  background-image: url("/Group_39.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center right;
+  z-index: 0;
+}
+
+body.page-ups-downs .frame-inner {
+  color: #000000 !important;
+}
+
+/* ===== FRAME – Total PnL ===== */
+
+body.page-total-pnl .frame-wrapper {
+  background: #78a5ff;
+}
+
+/* Motívumok: bal fent Group_42, jobb lent Group_41 */
+body.page-total-pnl .frame-wrapper::before,
+body.page-total-pnl .frame-wrapper::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 0;
+}
+
+/* Bal felső motívum */
+body.page-total-pnl .frame-wrapper::before {
+  top: -40px;
+  left: -40px;
+  background-image: url("/Group_42.webp");
+}
+
+/* Jobb alsó motívum */
+body.page-total-pnl .frame-wrapper::after {
+  bottom: -40px;
+  right: -40px;
+  background-image: url("/Group_41.webp");
+}
+
+/* Tipó – ugyanaz, mint total-coins, csak fehéren */
+
+body.page-total-pnl .frame-inner {
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+}
+
+body.page-total-pnl .frame-title-xl {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 22px;
+}
+
+body.page-total-pnl .pnl-number {
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-top: 10px;
+
+  color: transparent;             /* belül átlátszó */
+  -webkit-text-stroke: 2px #000;  /* fekete körvonal */
+}
+
+
+/* ===== FRAME – Hold Time ===== */
+
+body.page-hold .frame-wrapper {
+  background: #fff97a;
+}
+
+body.page-hold .frame-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  right: 10px;
+  width: 200px;
+  height: 200px;
+  background-image: url("/Group_45.webp");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom right;
+  z-index: 0;
+}
+
+body.page-hold .hold-inner {
+  color: #000000;
+  text-align: left;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 70px 40px;
+  z-index: 1;
+}
+
+.hold-title {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 18px;
+}
+
+.hold-highlight {
+  color: #e89cab;
+}
+
+.hold-subtitle {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 36px;
+}
+
+.hold-category {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  padding: 6px 18px;
+  border: 3px solid #000000;
+  margin: 0;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 640px) {
+  body.page-landing::before,
+  body.page-landing::after {
+    width: 150px;
+    opacity: 0.7;
+  }
+
+  .landing-title-year {
+    font-size: 44px;
+  }
+
+  .landing-title-main {
+    font-size: 38px;
+  }
+
+  .wallet-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .wallet-button {
+    margin-left: 0;
+    margin-top: 14px;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ================= SLIDER CONTROLS ================= */
+
+.slider-controls {
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #222;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  font-family: inherit;
+  font-size: 12px;
+  color: #f5f5f5;
+}
+
+.slider-btn {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: none;
+  background: #3a3a3a;
+  color: #f5f5f5;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.slider-btn:hover:not(:disabled) {
+  background: #4a4a4a;
+}
+
+.slider-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.slider-status {
+  padding: 0 4px;
+  opacity: 0.85;
+}
+
+
+/* ===== WINRATE – teljes typográfia TotalCoins alapján ===== */
+
+body.page-winrate .winrate-title {
+  font-size: 36px;        /* UGYANAZ mint frame-title-xl */
+  font-weight: 800;
+  line-height: 1.2;
+  color: #ffffff;          /* fehér, mint TotalCoins cím */
+  margin-bottom: 20px;
+}
+
+/* szám – teljes neon glow + méret megegyezik a coins-numberrel */
+body.page-winrate .winrate-number {
+  font-size: 36px;         /* EXACT same size as total-coins */
+  font-weight: 900;
+  line-height: 1.2;
+  color: #CDFB00;
+
+  text-shadow:
+    0 0 4px rgba(205, 251, 0, 0.6),
+    0 0 8px rgba(205, 251, 0, 0.50),
+    0 0 14px rgba(205, 251, 0, 0.40);
+}
+
+/* ================= HOLD TIME – Wrapped style ================= */
+
+body.page-hold .frame-wrapper {
+  background: #fff97a;         /* világos sárga háttér */
+}
+
+/* jobb alsó motívum */
+body.page-hold .frame-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  right: 10px;
+  width: 200px;
+  height: 200px;
+  background-image: url("/Group_45.webp");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom right;
+  z-index: 0;
+}
+
+/* belső tartalom */
+body.page-hold .hold-inner {
+  z-index: 1;
+  padding: 60px 40px;             /* ugyanaz mint total-coins oldal */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  color: #000;
+}
+
+/* HOLD TITLE – mindkét sor ugyanaz a nagy font */
+.hold-title,
+.hold-subtitle {
+  font-size: 36px;        /* <<< ugyanakkora mint az első sor */
+  font-weight: 800;       /* extra bold */
+  line-height: 1.25;
+  margin: 0 0 28px 0;
+  color: #000000;
+}
+
+/* highlight (23 seconds) */
+.hold-highlight {
+  color: #E89CAB;
+  font-weight: 800;
+}
+
+/* külön spacing a subtitle alatt */
+.hold-subtitle {
+  margin-bottom: 34px;      /* kicsit több spacing alatta */
+}
+
+/* category – JEETER */
+.hold-category-outline {
+  font-size: 35px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin: 0;
+}
+/* ================= UPS & DOWNS – Wrapped style ================= */
+
+body.page-ups-downs .frame-wrapper {
+  background: #ff79d1; /* rózsaszín háttér */
+}
+
+/* jobb oldali narancs motívum már megvan:
+   body.page-ups-downs .frame-wrapper::after { ... }  */
+
+body.page-ups-downs .ups-inner {
+  z-index: 1;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* vertikális közép */
+  align-items: flex-start;   /* balra igazított szöveg */
+  text-align: left;
+  color: #000000;
+}
+
+/* mindkét szövegrész ugyanakkora, mint a Hold/TotalCoins title */
+.ups-text {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 0 0 32px 0;
+}
+/* ============ MOST ACTIVE DAY – Wrapped unified typography ============ */
+
+body.page-most-active .mostactive-inner {
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;      /* középre rendezve, mint total-coins */
+  text-align: center;
+  color: #ffffff;
+  z-index: 1;
+}
+
+.mostactive-title {
+  font-size: 36px;          /* <<< UGYANAZ MINT TOTAL-COINS!!! */
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 0;
+}
+
+/* highlight szó (active) */
+.mostactive-title .highlight {
+  color: #CDFB00;
+  font-weight: 900;
+  text-shadow:
+    0 0 4px rgba(205, 251, 0, 0.6),
+    0 0 8px rgba(205, 251, 0, 0.50),
+    0 0 14px rgba(205, 251, 0, 0.40);
+}
+
+/* nagy szám (564) ugyanolyan glow mint 10,742 coins */
+.mostactive-number {
+  color: #CDFB00;
+  font-weight: 900;
+  text-shadow:
+    0 0 4px rgba(205, 251, 0, 0.6),
+    0 0 8px rgba(205, 251, 0, 0.50),
+    0 0 14px rgba(205, 251, 0, 0.40);
+}
+
+
+
